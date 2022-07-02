@@ -8,7 +8,7 @@ test('dummy returns one', () => {
 })
 
 
-describe('likes', () => {
+describe('all tests', () => {
   const blogs = [
     {
       _id: "5a422a851b54a676234d17f7",
@@ -74,4 +74,26 @@ describe('likes', () => {
     const result = listHelper.favoriteBlog(blogs)
     expect(result).toEqual(expectedResult)
   })
+
+  test('most blogs', () => {
+    expectedResult = {
+      author: "Robert C. Martin",
+      blogs: 3
+    }
+    
+    const result = listHelper.mostBlogs(blogs)
+    expect(result).toEqual(expectedResult)
+  })
+
+  test('most likes', () => {
+    expectedResult = {
+      author: "Edsger W. Dijkstra",
+      likes: 17
+    }
+    
+    const result = listHelper.mostLikes(blogs)
+    console.log(result)
+    expect(result).toEqual(expectedResult)
+  })
+
 })
