@@ -65,6 +65,20 @@ test('blog is deleted', async () => {
   const response = await api.get(`/api/blogs/${id}`).expect(404)
 })
 
+test('blog is updated', async () => {
+  const likes = 14
+  const id = helper.initialBlogs[0]._id
+  const updatedBlog = {
+    likes: likes
+  }
+  await api.patch(`/api/blogs/${id}`).send(updatedBlog)
+  const response = await api.get(`/api/blogs/${id}`)
+  console.log(response.body)
+  expect(response.body.likes).toBe(likes)
+  expect(response.body.title).toBe(helper.initialBlogs[0].title)
+})
+
+
 
 afterAll(() => {
   mongoose.connection.close()

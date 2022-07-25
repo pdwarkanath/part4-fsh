@@ -18,10 +18,9 @@ blogRouter.delete('/:id', async (request, response) => {
   response.status(204).end()
 })
 
-blogRouter.put('/:id', async (request, response) => {
-  const { title, author, url, likes } = new Blog(request.body)
-  const updatedBlog = Blog.findByIdAndUpdate(request.params.id, { title, author, url, likes }, { new: true, runValidators: true, context: 'query' })
-  response.status(201).json(updatedPerson)
+blogRouter.patch('/:id', async (request, response) => {
+  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, request.body)
+  updatedBlog ? response.status(201).json(updatedBlog) : response.status(400).end()
 })
   
   
