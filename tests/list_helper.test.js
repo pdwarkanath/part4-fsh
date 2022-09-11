@@ -11,7 +11,7 @@ test('dummy returns one', () => {
 
 describe('all tests', () => {
   const blogs = helper.initialBlogs
-
+  
   test('total likes', () => {
     const result = listHelper.totalLikes(blogs)
     expect(result).toBe(36)
@@ -44,7 +44,6 @@ describe('all tests', () => {
     }
     
     const result = listHelper.mostLikes(blogs)
-    console.log(result)
     expect(result).toEqual(expectedResult)
   })
 

@@ -64,4 +64,4 @@ const nonExistingId = async () => {
   }
   
 
-module.exports = { initialBlogs, nonExistingId, blogsInDb}
+module.exports = { initialBlogs, nonExistingId, blogsInDb }

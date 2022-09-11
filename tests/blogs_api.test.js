@@ -73,7 +73,6 @@ test('blog is updated', async () => {
   }
   await api.patch(`/api/blogs/${id}`).send(updatedBlog)
   const response = await api.get(`/api/blogs/${id}`)
-  console.log(response.body)
   expect(response.body.likes).toBe(likes)
   expect(response.body.title).toBe(helper.initialBlogs[0].title)
 })
