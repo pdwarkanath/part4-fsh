@@ -25,6 +25,16 @@ blogRouter.delete('/:id', async (request, response) => {
 })
 
 blogRouter.patch('/:id', async (request, response) => {
+  const blog = await Blog.findById(request.params.id)
+  if (blog) {
+    const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, request.body)
+    updatedBlog ? response.status(201).json(updatedBlog) : response.status(400).end()
+  } else {
+    response.status(400).send()
+  }
+})
+
+blogRouter.put('/:id', async (request, response) => {
   const user = request.user
   if (user) {
     const blog = await Blog.findById(request.params.id)
